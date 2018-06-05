@@ -1,0 +1,10 @@
+deploy:
+  access_key_id: AKIAJ2ATSMB6FJO7AOIQ
+  bucket: aaronjameslang.com
+  provider: s3
+  region: us-west-2
+  skip_cleanup: true
+  on:
+    branch: master
+  secret_access_key:
+    secure: n0KVXhgpTCFKKHV81KfP+5CHbddxRmFZrC4NFDZXZ3s1zAlkG0WZnDky3LHEpjItqnt28H8dSXVR7VQRWqGcpnXadaT/x5xdTNadFgFZNcmCHel6p3GokYkoF72AVoJohBo3mUjw2nDuw/EdYGIyOgTGwAx0WdUoiiZui13HbYD4OBFSuEAtDiPNgzTsAUWDB8dQa4WY2LQtwr3gY/1dvQZ7HGB004ns/LfyK6kChJFNpJe8U3XPTYWLHzYlHyZ0tTQMe6rSeq1yZvNfXR+9IyVEucoAJFtjg083ITccP7Dcb8urWy8FXdngxSwIo9vF8Sz+lKGWxG7WgMp76KTbWbJPxMAHww6SpvygzfnPf1Mu40dk11BDcR3v1JHp5Q2iWOpbZTqv3ZJKUzdjp2cw+flI+uUnMB/Hpxk+gg6Wt7a3IRhS3ejZmT+Ml9+o0lIGfzxjz8xgJfmfrHAkaYQ8+broZCmU/VbVX0RnL5Le4kyAPZASkfMOaPaMpMIHOtMeqxcKuMYNke4Gkp0QuVqrweNRApbcJsPbB4yle5BT0JMso/3BGOZetTMopskxA5NqFwZhhzWLnW4Bwl0Ln0sC4ac60BJTtbgwh6EiUcwpEBBbDQ1vo8h2aey8Lk8RUrBeXbGpvZY3bzIwhd+I5R4PKSKs65MyA1CeBPvwO7cgSB8=
