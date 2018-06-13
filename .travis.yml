@@ -1,4 +1,5 @@
-script: true
+language: node_js
+node_js: lts/*
 deploy:
   access_key_id: AKIAJ2ATSMB6FJO7AOIQ
   bucket: aaronjameslang.com
