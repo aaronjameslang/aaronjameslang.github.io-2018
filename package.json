@@ -10,14 +10,40 @@
     "test": "./build.sh"
   },
   "dependencies": {
+    "@types/jest": "^23.1.0",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",
+    "@types/react-test-renderer": "^16.0.1",
+    "@types/request": "^2.47.0",
+    "@types/request-promise-native": "^1.0.15",
+    "antd": "^3.6.2",
     "inline-assets": "^1.2.7",
-    "parcel-bundler": "1.7.1 || ^1.8.2",
+    "jest": "^23.1.0",
+    "parcel-bundler": "1.7.1",
     "prettier": "^1.13.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-test-renderer": "^16.4.1",
+    "replay": "^2.3.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5",
+    "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
-    "typescript": "^2.9.1"
+    "typescript": "^2.9.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./src/setupTest.ts",
+    "testRegex": "src/.*.spec.tsx?$",
+    "transform": {
+      ".tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "node",
+      "ts",
+      "tsx"
+    ]
   }
 }

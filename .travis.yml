@@ -3,7 +3,7 @@ node_js: lts/*
 deploy:
   access_key_id: AKIAJ2ATSMB6FJO7AOIQ
   bucket: aaronjameslang.com
-  local_dir: dist/s3
+  local_dir: dist/inline
   provider: s3
   region: us-west-2
   skip_cleanup: true

@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "jsx": "react",
+    "noEmitOnError": true,
+    "outDir": "dist/tsc",
     "strict": true
+  },
+  "parcelTsPluginOptions": {
+    "transpileOnly": false
   }
 }
