@@ -1,3 +1,7 @@
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Toolbar from "@material-ui/core/Toolbar/Toolbar";
+import Typography from "@material-ui/core/Typography/Typography";
 import React from "react";
 import * as Repo from "./Repo";
 
@@ -13,6 +17,18 @@ export default class App extends React.Component<Props, State> {
     );
   }
   public render() {
-    return <div children={this.state ? this.state.items : []} />;
+    return (
+      <div>
+        <CssBaseline />
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              🚧 Under Construction 🚧
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        {this.state ? this.state.items : []}
+      </div>
+    );
   }
 }

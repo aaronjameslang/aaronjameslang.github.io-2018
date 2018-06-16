@@ -3,7 +3,8 @@ set -eux
 
 prettier '**/*.{js,json,ts,tsx}' --write
 tslint --project . --fix
-tsc && rm -rf dist/tsc
+tsc
+rm -rf dist/tsc
 test ! -z ${CI-} || export REPLAY=record
 jest
 parcel build src/index.html --out-dir dist/parcel
