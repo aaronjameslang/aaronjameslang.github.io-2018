@@ -1,7 +1,7 @@
-import Timeline from "antd/lib/Timeline";
 import "antd/lib/Timeline/style/css";
-import React, { ReactElement } from "react";
 import * as Repo from "./Repo";
+import React, { ReactElement } from "react";
+import { Timeline } from "antd";
 
 type Props = never;
 interface State {

@@ -1,4 +1,4 @@
-import Timeline from "antd/lib/timeline/Timeline";
+import { Timeline } from "antd";
 import React, { ReactElement } from "react";
 import request from "request-promise-native";
 import { username } from "./config";
