@@ -5,6 +5,7 @@
     "jsx": "react",
     "noEmitOnError": true,
     "outDir": "dist/tsc",
+    "lib": ["es5", "es6", "dom"],
     "strict": true
   },
   "parcelTsPluginOptions": {

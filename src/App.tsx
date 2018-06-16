@@ -1,7 +1,5 @@
-import "antd/lib/Timeline/style/css";
+import React from "react";
 import * as Repo from "./Repo";
-import React, { ReactElement } from "react";
-import { Timeline } from "antd";
 
 type Props = never;
 interface State {
@@ -15,6 +13,6 @@ export default class App extends React.Component<Props, State> {
     );
   }
   public render() {
-    return <Timeline children={this.state ? this.state.items : []} />;
+    return <div children={this.state ? this.state.items : []} />;
   }
 }
