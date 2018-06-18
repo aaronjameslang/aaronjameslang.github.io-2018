@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  RestApiGithub:
+    Type: AWS::ApiGateway::RestApi
+    Properties: { Name: api.github.ajla.ng }
+  ResourceUsersRepos:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: { 'Fn::GetAtt': [RestApiGithub, RootResourceId] }
+      PathPart: user
+      RestApiId: { Ref: RestApiGithub }
+  MethodUsersRepos:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: GET
+      Integration:
+        IntegrationHttpMethod: GET
+        PassthroughBehavior: WHEN_NO_TEMPLATES
+        Type: HTTP_PROXY # or HTTP ?
+        Uri: https://api.github.com/users/aaronjameslang/repos
+      ResourceId: { Ref: ResourceUsersRepos }
+      RestApiId: { Ref: RestApiGithub }
