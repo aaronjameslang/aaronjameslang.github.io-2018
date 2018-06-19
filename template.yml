@@ -3,6 +3,16 @@ Resources:
   RestApiGithub:
     Type: AWS::ApiGateway::RestApi
     Properties: { Name: api.github.ajla.ng }
+  DeploymentProduction:
+    DependsOn: MethodUsersRepos
+    Type: AWS::ApiGateway::Deployment
+    Properties: { RestApiId: { Ref: RestApiGithub } }
+  StageProduction:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      DeploymentId: { Ref: DeploymentProduction }
+      StageName: production
+      RestApiId: { Ref: RestApiGithub }
   ResourceUsersRepos:
     Type: AWS::ApiGateway::Resource
     Properties:

@@ -12,3 +12,7 @@ test: awscli
 
 deploy: awscli test
 	aws cloudformation deploy --template-file template.yml --stack-name api-github-ajla-ng
+
+delete: awscli
+	aws cloudformation delete-stack --stack-name api-github-ajla-ng
+
