@@ -1,4 +1,4 @@
-# api.github.ajla.ng
+# api.github.ajla.ng [![CircleCI](https://circleci.com/gh/aaronjameslang/api.github.ajla.ng.svg?style=svg)](https://circleci.com/gh/aaronjameslang/api.github.ajla.ng)
 
 ## Development
 
