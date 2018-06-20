@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  RecordSet:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      AliasTarget:
+        DNSName: !GetAtt Distribution.DomainName
+        HostedZoneId: Z2FDTNDATAQYW2
+      HostedZoneName: ajla.ng.
+      Name: api.github.ajla.ng.
+      Type: A
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases: [ api.github.ajla.ng ]
+        DefaultCacheBehavior:
+          Compress: true
+          DefaultTTL: 60
+          ForwardedValues:
+            Cookies: { Forward: none }
+            QueryString: false
+          TargetOriginId: OriginProduction
+          ViewerProtocolPolicy: allow-all
+        Enabled: true
+        Origins:
+        - CustomOriginConfig: { OriginProtocolPolicy: https-only }
+          DomainName: !Sub
+            - ${RestApiGithub}.execute-api.${AWS::Region}.amazonaws.com
+            - RestApiGithub: !Ref RestApiGithub
+          Id: OriginProduction
+          OriginPath: /production
+        ViewerCertificate: { CloudFrontDefaultCertificate: true }
+  RestApiGithub:
+    Type: AWS::ApiGateway::RestApi
+    Properties: { Name: api.github.ajla.ng }
+  DeploymentProduction:
+    DependsOn: MethodUsersRepos
+    Type: AWS::ApiGateway::Deployment
+    Properties: { RestApiId: { Ref: RestApiGithub } }
+  StageProduction:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      DeploymentId: { Ref: DeploymentProduction }
+      StageName: production
+      RestApiId: { Ref: RestApiGithub }
+  ResourceUsersRepos:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: { 'Fn::GetAtt': [RestApiGithub, RootResourceId] }
+      PathPart: user
+      RestApiId: { Ref: RestApiGithub }
+  MethodUsersRepos:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: GET
+      Integration:
+        IntegrationHttpMethod: GET
+        PassthroughBehavior: WHEN_NO_TEMPLATES
+        Type: HTTP_PROXY # or HTTP ?
+        Uri: https://api.github.com/users/aaronjameslang/repos
+      ResourceId: { Ref: ResourceUsersRepos }
+      RestApiId: { Ref: RestApiGithub }
