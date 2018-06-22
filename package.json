@@ -1,0 +1,17 @@
+{
+  "name": "aaronjameslang.github.io",
+  "author": "Aaron J. Lang",
+  "description": "Personal Website",
+  "homepage": "aaronjameslang.com",
+  "license": "MIT",
+  "repository": "aaronjameslang/aaronjameslang.github.io",
+  "scripts": {
+    "start": "open http://localhost:1234/ && parcel src/index.html",
+    "test": "./build.sh"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.260.1",
+    "camelcase": "^5.0.0",
+    "ramda": "^0.25.0"
+  }
+}
