@@ -7,11 +7,15 @@
   "repository": "aaronjameslang/aaronjameslang.github.io",
   "scripts": {
     "start": "open http://localhost:1234/ && parcel src/index.html",
-    "test": "./build.sh"
+    "test": "./test.sh"
   },
   "devDependencies": {
     "aws-sdk": "^2.260.1",
     "camelcase": "^5.0.0",
     "ramda": "^0.25.0"
+  },
+  "dependencies": {
+    "prettier": "^1.13.5",
+    "standard": "^11.0.1"
   }
 }

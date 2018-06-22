@@ -1,26 +1,27 @@
 const AWS = require('aws-sdk')
 const Resources = require('./Resources')
 
-const cf = () => new AWS.CloudFormation({apiVersion: '2010-05-15', region: 'eu-west-2'});
-const cb = (err, data) => console.log(err||data, err&&err.stack)
+const cf = () =>
+  new AWS.CloudFormation({ apiVersion: '2010-05-15', region: 'eu-west-2' })
+const cb = (err, data) => console.log(err || data, err && err.stack)
 
-function createStack() {
-  cf().createStack({StackName: 'ajla-ng', TemplateBody: this.toJson()}, cb)
+function createStack () {
+  cf().createStack({ StackName: 'ajla-ng', TemplateBody: this.toJson() }, cb)
 }
 
-function updateStack() {
-  cf().updateStack({StackName: 'ajla-ng', TemplateBody: this.toJson()}, cb)
+function updateStack () {
+  cf().updateStack({ StackName: 'ajla-ng', TemplateBody: this.toJson() }, cb)
 }
 
-function log() {
+function log () {
   console.log(this.toJson())
 }
 
-function validateTemplate() {
+function validateTemplate () {
   cf().validateTemplate({ TemplateBody: this.toJson() }, cb)
 }
 
-function toJson() {
+function toJson () {
   return JSON.stringify(this, null, 2)
 }
 
@@ -31,5 +32,5 @@ module.exports = {
   log,
   toJson,
   updateStack,
-  validateTemplate,
+  validateTemplate
 }
