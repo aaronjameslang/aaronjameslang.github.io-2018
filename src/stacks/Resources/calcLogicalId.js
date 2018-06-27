@@ -5,5 +5,5 @@ module.exports = function calcLogicalId (resource) {
   parts.shift()
   parts.push(resource.Properties.Name)
   const joined = parts.join('.')
-  return camelcase(joined, {pascalCase: true})
+  return camelcase(joined, { pascalCase: true })
 }

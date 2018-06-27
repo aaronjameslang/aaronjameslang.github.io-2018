@@ -1,5 +1,6 @@
 #! /bin/sh
 set -eux
 
-prettier 'cloudformation/*.{js,json,md}' --write
+prettier 'src/**/*.{js,json,md}' --write
 standard --fix
+node -e 'require("./src/stacks").validateTemplate()'
