@@ -1,0 +1,164 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "CloudFrontDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "ajl7c7.com",
+            "ajla.ng",
+            "langsolutionsltd.com",
+            "www.ajl7c7.com",
+            "www.ajla.ng",
+            "www.langsolutionsltd.com"
+          ],
+          "DefaultCacheBehavior": {
+            "Compress": true,
+            "DefaultTTL": 2,
+            "ForwardedValues": {
+              "Cookies": {
+                "Forward": "none"
+              },
+              "QueryString": false
+            },
+            "MaxTTL": 2,
+            "TargetOriginId": "Origin0",
+            "ViewerProtocolPolicy": "allow-all"
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "Origins": [
+            {
+              "CustomOriginConfig": {
+                "OriginProtocolPolicy": "http-only"
+              },
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "S3Bucket",
+                  "DomainName"
+                ]
+              },
+              "Id": "Origin0"
+            }
+          ],
+          "ViewerCertificate": {
+            "CloudFrontDefaultCertificate": true
+          }
+        }
+      }
+    },
+    "Route53RecordSetAjl7c7Com": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneName": "ajl7c7.com.",
+        "Name": "ajl7c7.com.",
+        "Type": "A"
+      }
+    },
+    "Route53RecordSetWwwAjl7c7Com": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneName": "ajl7c7.com.",
+        "Name": "www.ajl7c7.com.",
+        "Type": "A"
+      }
+    },
+    "Route53RecordSetAjlaNg": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneName": "ajla.ng.",
+        "Name": "ajla.ng.",
+        "Type": "A"
+      }
+    },
+    "Route53RecordSetWwwAjlaNg": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneName": "ajla.ng.",
+        "Name": "www.ajla.ng.",
+        "Type": "A"
+      }
+    },
+    "Route53RecordSetLangsolutionsltdCom": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneName": "langsolutionsltd.com.",
+        "Name": "langsolutionsltd.com.",
+        "Type": "A"
+      }
+    },
+    "Route53RecordSetWwwLangsolutionsltdCom": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        },
+        "HostedZoneName": "langsolutionsltd.com.",
+        "Name": "www.langsolutionsltd.com.",
+        "Type": "A"
+      }
+    },
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "AccessControl": "PublicRead",
+        "BucketName": "ajla.ng",
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html"
+        }
+      }
+    }
+  }
+}

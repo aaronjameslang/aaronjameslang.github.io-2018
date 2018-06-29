@@ -1,3 +1,5 @@
+const Distribution = require('../CloudFront/Distribution')
+const calcLogicalId = require('../calcLogicalId')
 const { xprod } = require('ramda')
 
 const HOSTED_ZONE_ID_CLOUDFRONT = 'Z2FDTNDATAQYW2'
@@ -11,11 +13,11 @@ module.exports = xprod(HostedZoneNames, subdomains).map(
     Type: 'AWS::Route53::RecordSet',
     Properties: {
       AliasTarget: {
-        DNSName: 'dpabyrld1suna.cloudfront.net', // TODO name distribution
-        // DNSName : '!GetAtt Distribution.DomainName', // TODO name distribution
+        DNSName: {
+          'Fn::GetAtt': [calcLogicalId(Distribution[0]), 'DomainName']
+        },
         HostedZoneId: HOSTED_ZONE_ID_CLOUDFRONT
       },
-      Comment: new Date(),
       HostedZoneName,
       Name: subdomain + HostedZoneName,
       Type: 'A'
