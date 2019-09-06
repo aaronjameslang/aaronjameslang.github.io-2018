@@ -20,7 +20,7 @@
     "@types/request-promise-native": "^1.0.15",
     "inline-assets": "^1.2.7",
     "jest": "^23.1.0",
-    "parcel-bundler": "1.7.1",
+    "parcel-bundler": "1.10.0",
     "prettier": "^1.13.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
