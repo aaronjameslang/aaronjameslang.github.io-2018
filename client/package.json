@@ -28,7 +28,7 @@
     "replay": "^2.3.0",
     "request": "^2.87.0",
     "request-promise-native": "^1.0.5",
-    "ts-jest": "^22.4.6",
+    "ts-jest": "^23.0.0",
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
   },
